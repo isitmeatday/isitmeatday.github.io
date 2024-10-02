@@ -1,24 +1,26 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { css } from '@emotion/react';
+
+const theFirstMeatDay = new Date(2023, 10, 1);
+
+const isItMeatDay = (): boolean => {
+  const currentDate = new Date();
+  const currentMonth = currentDate.getMonth();
+  const currentDay = currentDate.getDate();
+
+  return currentMonth === theFirstMeatDay.getMonth() && currentDay === theFirstMeatDay.getDate();
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    isItMeatDay() ? 
+    <div className={'container'}>
+      <h1>Yes</h1>
+    </div> : 
+    <div className={'container'}>
+      <h1>No</h1>
     </div>
   );
 }
